@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+        <footer className="footer sm:footer-horizontal bg-inherit text-inherit-content p-10">
   <aside>
     <img src="https://img.icons8.com/?size=70&id=q9YwybnZ1h5A&format=png"/>
     <p>
