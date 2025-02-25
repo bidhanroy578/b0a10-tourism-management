@@ -40,14 +40,14 @@ const Header = ({ theme, setTheme }) => {
                     </ul>
                 </div>
                 <div className="navbar-end space-x-4">
-                    <button>
+                    <>
                         {
                             theme === 'dark' ?
                                 <button onClick={() => handleTheme('light')}><MdLightMode className='text-3xl' /></button>
                                 :
                                 <button onClick={() => handleTheme('dark')}><MdLightMode className='text-3xl' /></button>
                         }
-                    </button>
+                    </>
                     <Link className='btn bg-blue-200' to="/login">Login</Link>
                     <Link className='btn bg-blue-200' to='/register'>Register</Link>
                 </div>
