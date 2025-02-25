@@ -5,7 +5,7 @@ import { useState } from "react"
 function App() {
 const [theme , setTheme] = useState('light')
   return (
-    <div className={`${theme === 'dark' ? 'dark' : ''}`}>
+    <div className={`${theme === 'dark' ? 'dark' : ''} dark:bg-black text-black dark:text-white`}>
       <Header theme={theme} setTheme ={setTheme} />
       <Outlet />
     </div>
