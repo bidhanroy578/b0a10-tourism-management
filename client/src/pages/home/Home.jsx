@@ -1,3 +1,4 @@
+import Contact from './Contact';
 import Countries from './Countries';
 import PlanAtrip from './PlanAtrip';
 import PopularSpots from './PopularSpots';
@@ -12,6 +13,7 @@ const Home = () => {
             <PopularSpots />
             <Countries />
             <PlanAtrip />
+            <Contact />
         </>
     );
 };
