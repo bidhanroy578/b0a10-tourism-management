@@ -1,3 +1,4 @@
+import Countries from './Countries';
 import PopularSpots from './PopularSpots';
 import Slide from './Slider';
 
@@ -8,6 +9,7 @@ const Home = () => {
                 <Slide />
             </div>
             <PopularSpots />
+            <Countries />
         </div>
     );
 };
