@@ -14,7 +14,7 @@ const PopularSpots = () => {
                 <h3 className='text-5xl flex-1/2'>Pupular tourists spots around the South East Asia</h3>
             </div>
             {/* List of popular tourist spots */}
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-self-center gap-5'>
+            <div className='flex flex-auto flex-wrap justify-center justify-self-center gap-5'>
                 {
                     list.map((spot, index) => <Card key={index} spot={spot} />)
                 }
