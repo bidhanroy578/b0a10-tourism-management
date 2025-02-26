@@ -9,9 +9,9 @@ const PopularSpots = () => {
     ]
     return (
         <div className='mt-16'>
-            <div className='flex justify-center items-center'>
-                <img src={bg3} className='flex-1/2' />
-                <h3 className='text-5xl flex-1/2'>Pupular tourists spots around the South East Asia</h3>
+            <div className='flex justify-center items-center w-full overflow-x-hidden'>
+                <h3 className='text-[4vw]'>Pupular tourists spots around the South East Asia</h3>
+                <img src={bg3} className='flex-1/2 max-h-screen' />
             </div>
             {/* List of popular tourist spots */}
             <div className='flex flex-auto flex-wrap justify-center justify-self-center gap-5'>
