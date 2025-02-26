@@ -1,13 +1,13 @@
+import PopularSpots from './PopularSpots';
 import Slide from './Slider';
 
 const Home = () => {
     return (
         <div>
-            this is home component
-
-            <div className='w-[90vw] mx-auto max-h-[90vh] border-8 border-r-red-600 text-black'>
+            <div className='w-[90vw] mx-auto max-h-[90vh]'>
                 <Slide />
             </div>
+            <PopularSpots />
         </div>
     );
 };
