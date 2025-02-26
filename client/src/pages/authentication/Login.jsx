@@ -59,7 +59,7 @@ const Login = () => {
         <>
             <Outlet></Outlet>
             <div className="hero min-h-screen bg-cover bg-center" style={{ backgroundImage: `url(${bg2})` }}>
-                <div className="hero-content bg-white/60 text-black dark:bg-black/60 dark:text-white flex-col w-full ">
+                <div className="hero-content backdrop-blur-[3px] flex-col w-full max-w-md">
                     <div className="text-center">
                         <h1 className="text-5xl font-bold">Login Now!</h1>
                     </div>
@@ -70,12 +70,12 @@ const Login = () => {
                                 <input type="email" name="email" className="input" placeholder="Email" />
                                 <label className="fieldset-label">Password</label>
                                 <input type="password" name="password" className="input" placeholder="Password" />
-                                <div><a className="link link-hover">Forgot password?</a></div>
-                                <button className="btn bg-amber-200 mt-4">Login</button>
-                                <p>New here? <Link to='/register' className="link hover:text-red-400 font-rancho text-[15px]">create new account</Link></p>
+                                <div><a className="link link-hover text-amber-200 font-bold">Forgot password?</a></div>
+                                <button className="btn bg-amber-200 text-black mt-4">Login</button>
+                                <p className="text-white">New here? <Link to='/register' className="link hover:text-red-400 font-rancho text-[15px]">create new account</Link></p>
                             </fieldset>
                         </form>
-                        <button className="btn bg-amber-200 mt-4">Sign In With Google</button>
+                        <button className="btn bg-amber-200 text-black mt-4">Sign In With Google</button>
                     </div>
                 </div>
             </div>

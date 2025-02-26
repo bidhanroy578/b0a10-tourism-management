@@ -21,7 +21,7 @@ const Slide = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 1500,
+        autoplaySpeed: 3000,
         pauseOnHover: true
     }
     return (

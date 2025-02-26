@@ -16,7 +16,7 @@ const Card = ({ spot }) => {
                 <div className="card-actions justify-end">
                     <div className="badge badge-outline">2000 / year</div>
                     <div className="badge badge-outline">country</div>
-                    <button className="btn dark:bg-black dark:text-white">Details</button>
+                    <button className="btn btn-xs bg-blue-400"> Details </button>
                 </div>
             </div>
         </div>

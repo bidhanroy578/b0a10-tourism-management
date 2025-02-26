@@ -44,24 +44,24 @@ const Register = () => {
     // }
     return (
         <div className="hero min-h-screen bg-cover bg-center" style={{backgroundImage : `url(${bg2})`}}>
-            <div className="hero-content bg-white/60 text-black dark:bg-black/60 dark:text-white flex-col w-full ">
+                <div className="hero-content backdrop-blur-[3px] flex-col w-full max-w-md">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Register Now!</h1>
                 </div>
                 <div className="card w-full max-w-sm shrink-0 shadow-2xl">
                     <form className="card-body">
                         <fieldset className="fieldset">
-                            <label className="fieldset-label text-black dark:text-white">Name</label>
-                            <input type="text" name="name" className="input dark:text-black" placeholder="Name" />
-                            <label className="fieldset-label text-black dark:text-white">Email</label>
-                            <input type="email" name="email" className="input dark:text-black" placeholder="Email" />
-                            <label className="fieldset-label text-black dark:text-white">Password</label>
-                            <input type="password" name="password" className="input dark:text-black" placeholder="Password" />
-                            <button className="btn bg-amber-200 mt-4">Register</button>
-                            <p>Already have an account? <Link to='/login' className="link hover:text-red-400 font-rancho text-[15px]">login here</Link></p>
+                            <label className="fieldset-label text-black">Name</label>
+                            <input type="text" name="name" className="input" placeholder="Name" />
+                            <label className="fieldset-label text-black">Email</label>
+                            <input type="email" name="email" className="input" placeholder="Email" />
+                            <label className="fieldset-label text-black">Password</label>
+                            <input type="password" name="password" className="input" placeholder="Password" />
+                            <button className="btn bg-amber-200 text-black mt-4">Register</button>
+                            <p className="text-white">Already have an account? <Link to='/login' className="link hover:text-red-400 font-rancho text-[15px]">login here</Link></p>
                         </fieldset>
                     </form>
-                    <button className="btn bg-amber-200 mt-4">Sign In With Google</button>
+                    <button className="btn bg-amber-200 text-black mt-4">Sign In With Google</button>
                 </div>
             </div>
         </div>

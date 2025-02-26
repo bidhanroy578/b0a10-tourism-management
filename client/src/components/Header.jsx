@@ -1,15 +1,25 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import { MdLightMode } from "react-icons/md";
+import { useEffect, useState } from 'react';
 
-const Header = ({ theme, setTheme }) => {
-    const localTheme = localStorage.theme
-    console.log(localTheme);
-    setTheme(localTheme)
-    const handleTheme = (theme) => {
-        setTheme(theme)
-        localStorage.setItem('theme', theme)
+const Header = () => {
+    const [theme, setTheme] = useState('light')
+
+    const handleLight = () => {
+        setTheme('light')
+        localStorage.setItem('theme', 'light')
     }
+    const handleDark = () => {
+        setTheme('dark')
+        localStorage.setItem('theme', 'dark')
+    }
+    useEffect(() => {
+        setTheme(localStorage.getItem('theme'))
+        if (localStorage.getItem('theme')) {
+            document.querySelector('html').setAttribute('data-theme', localStorage.theme)
+        }
+    }, [theme])
 
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -43,22 +53,16 @@ const Header = ({ theme, setTheme }) => {
                     <>
                         {
                             theme === 'dark' ?
-                                <button onClick={() => handleTheme('light')}><MdLightMode className='text-3xl' /></button>
+                                <button onClick={handleLight}><MdLightMode className='text-3xl' /></button>
                                 :
-                                <button onClick={() => handleTheme('dark')}><MdLightMode className='text-3xl' /></button>
+                                <button onClick={handleDark}><MdLightMode className='text-3xl' /></button>
                         }
                     </>
-                    <Link className='btn bg-blue-200' to="/login">Login</Link>
-                    <Link className='btn bg-blue-200' to='/register'>Register</Link>
+                    <Link className='btn bg-blue-400' to="/login">Login</Link>
+                    <Link className='btn bg-blue-400' to='/register'>Register</Link>
                 </div>
             </div>
         </div>
     );
 };
-
-Header.propTypes = {
-    theme: PropTypes.string,
-    setTheme: PropTypes.func,
-};
-
 export default Header;
