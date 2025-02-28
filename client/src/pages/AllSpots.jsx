@@ -1,16 +1,18 @@
+import { useLoaderData } from "react-router-dom";
 
 const AllSpots = () => {
-
-    const allSpots = [
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-        { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
-    ]
+    const allSpots = useLoaderData()
+    console.log(allSpots)
+    // const allSpots = [
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    //     { "name": "Angkor Wat", "image": "https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg" },
+    // ]
 
     return (
         <div className="flex flex-auto flex-wrap gap-5 justify-center w-full my-16">
@@ -21,7 +23,7 @@ const AllSpots = () => {
                             <img src={spot.image} />
                         </figure>
                         <div className="card-body">
-                            <h2 className="card-title">{spot.name}</h2>
+                            <h2 className="card-title">{spot.spot_name}</h2>
                             <p>average cost here</p>
                             <p><span> 10000/year </span> <span> 7 days plan </span> </p>
                             <div className="card-actions">

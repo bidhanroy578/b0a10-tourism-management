@@ -18,7 +18,15 @@ const AddSpot = () => {
         const winter = form.winter.checked
         const newSpot = { country, summer, winter, spot_name, location, cost, duration, image, visitor, usr_email, usr_name, description, }
 
-        console.log(newSpot)
+        fetch(`http://localhost:3000/spots` , {
+            method : 'post',
+            headers: { 'content-type': 'application/json'},
+            body: JSON.stringify(newSpot)
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result)
+        })
     }
 
     return (
@@ -50,7 +58,7 @@ const AddSpot = () => {
                                         <label className="fieldset-label">User Email</label>
                                         <input name="usr_email" type="text" className="input" placeholder="User Email" required />
                                         <label className="fieldset-label">User name</label>
-                                        <input name="usr_name" type="password" className="input" placeholder="User name" required />
+                                        <input name="usr_name" type="text" className="input" placeholder="User name" required />
                                     </inputset>
                                 </inputset>
                                 <label className="fieldset-label">image url</label>
