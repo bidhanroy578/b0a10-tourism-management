@@ -37,6 +37,8 @@ async function run() {
 
         const database = client.db("travel_nest");
         const spotsCollection = database.collection("spots");
+
+        // Get all spots from the database 
         app.get('/spots', async (req, res) => {
             const cursor = spotsCollection.find(
                 {},
@@ -54,6 +56,17 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
+
+        // spots collection of an user 
+        app.get('/spots/:usr_email', async (req, res) => {
+            const query = { 'usr_email': req.params.usr_email }
+            const cursor = spotsCollection.find(query)
+            const result = await cursor.toArray()
+            res.send(result)
+            // res.send(query)
+        })
+
+        // Add a new spot to the database 
         app.post('/spots', async (req, res) => {
             const spot = req.body
             const result = await spotsCollection.insertOne(spot)
