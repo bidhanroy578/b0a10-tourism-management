@@ -44,13 +44,7 @@ async function run() {
                 {},
                 {
                     projection: {
-                        cost: 1,
-                        visitor: 1,
-                        duration: 1,
-                        summer: 1,
-                        winter: 1,
-                        image: 1,
-                        spot_name: 1,
+                        cost: 1, visitor: 1, duration: 1, summer: 1, winter: 1, image: 1, spot_name: 1,
                     }
                 })
             const result = await cursor.toArray()
@@ -59,11 +53,16 @@ async function run() {
 
         // spots collection of an user 
         app.get('/spots/:usr_email', async (req, res) => {
-            const query = { 'usr_email': req.params.usr_email }
-            const cursor = spotsCollection.find(query)
+            const cursor = spotsCollection.find(
+                { 'usr_email': req.params.usr_email },
+                {
+                    projection: {
+                        spot_name: 1, location: 1, country: 1, visitor: 1,
+                    }
+                }
+            )
             const result = await cursor.toArray()
             res.send(result)
-            // res.send(query)
         })
 
         // Add a new spot to the database 
