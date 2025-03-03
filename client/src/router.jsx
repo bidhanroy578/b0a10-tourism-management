@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import AllSpots from "./pages/AllSpots";
 import AddSpot from "./pages/AddSpot";
 import MyList from "./pages/MyList";
+import Details from "./pages/Details";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
                 path: '/all-spots',
                 element: <AllSpots />,
                 loader: ()=> fetch(`http://localhost:3000/spots`)
+            },
+            {
+                path: '/details/:id',
+                element: <Details />,
+                loader: ({params}) => fetch(`http://localhost:3000/spot/${params.id}`)
             },
             {
                 path: '/add-spots' , 

@@ -9,7 +9,7 @@ const MyList = () => {
     const [list, SetList] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/spots/test@mail.co`)
+        fetch(`http://localhost:3000/spots/test@mail.com`)
             .then(res => res.json())
             .then(data => {
                 SetList(data)
@@ -54,7 +54,7 @@ const MyList = () => {
                                     <td>{item.location}</td>
                                     <td>{item.country}</td>
                                     <td>{item.visitor}</td>
-                                    <td><button className="btn btn-outline btn-info text-2xl"><FcViewDetails /></button></td>
+                                    <td><Link to={`/details/${item._id}`} className="btn btn-outline btn-info text-2xl"><FcViewDetails /></Link></td>
                                     <td><button className="btn btn-outline btn-warning text-2xl"><CiEdit /></button></td>
                                     <td><button className="btn btn-outline btn-error text-2xl"><MdDeleteOutline /></button></td>
                                 </tr>
