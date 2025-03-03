@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const port = process.env.PORT || 3000
 
 
@@ -50,6 +50,13 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
+        
+        // Get one spot data from whole spots collection
+        app.get('/spot/:id' , async (req, res) => {
+            const cursor = await spotsCollection.findOne({ _id : new ObjectId(req.params.id)})
+            res.send(cursor)
+        })
+
 
         // spots collection of an user 
         app.get('/spots/:usr_email', async (req, res) => {
