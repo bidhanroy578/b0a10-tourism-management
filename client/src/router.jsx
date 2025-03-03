@@ -7,6 +7,7 @@ import AllSpots from "./pages/AllSpots";
 import AddSpot from "./pages/AddSpot";
 import MyList from "./pages/MyList";
 import Details from "./pages/Details";
+import EditSpot from "./pages/EditSpot";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
             {
                 path: '/add-spots' , 
                 element: <AddSpot />,
+            },
+            {
+                path: 'edit-spot/:id',
+                element: <EditSpot />,
+                loader: ({params}) => fetch(`http://localhost:3000/spot/${params.id}`)
             },
             {
                 path: '/my-list' ,

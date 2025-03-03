@@ -50,10 +50,10 @@ async function run() {
             const result = await cursor.toArray()
             res.send(result)
         })
-        
+
         // Get one spot data from whole spots collection
-        app.get('/spot/:id' , async (req, res) => {
-            const cursor = await spotsCollection.findOne({ _id : new ObjectId(req.params.id)})
+        app.get('/spot/:id', async (req, res) => {
+            const cursor = await spotsCollection.findOne({ _id: new ObjectId(req.params.id) })
             res.send(cursor)
         })
 
@@ -76,6 +76,14 @@ async function run() {
         app.post('/spots', async (req, res) => {
             const spot = req.body
             const result = await spotsCollection.insertOne(spot)
+            res.send(result);
+        })
+
+        // Update a spot in the database
+        app.put('/spots/:id', async (req, res) => {
+            const result = await spotsCollection.updateOne(
+                { _id: new ObjectId(req.params.id) },
+                { $set: req.body })
             res.send(result);
         })
 
