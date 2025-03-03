@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 
 const Details = () => {
-    const { country, summer, winter, spot_name, location, cost, duration, image, visitor, usr_email, usr_name, description, } = useLoaderData()
+    const { country, summer, winter, spot_name, location, cost, duration, image, visitor, usr_email, description, } = useLoaderData()
     
     return (
         <div className="mb-10">
