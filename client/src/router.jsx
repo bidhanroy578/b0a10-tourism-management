@@ -5,6 +5,7 @@ import Register from "./pages/authentication/Register";
 import Home from "./pages/home/Home";
 import AllSpots from "./pages/AllSpots";
 import AddSpot from "./pages/AddSpot";
+import MyList from "./pages/MyList";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/add-spots' , 
                 element: <AddSpot />,
+            },
+            {
+                path: '/my-list' ,
+                element : <MyList />,
             },
             {
                 path: "/login",
