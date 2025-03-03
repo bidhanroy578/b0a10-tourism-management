@@ -17,6 +17,19 @@ const MyList = () => {
             })
     }, [])
 
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3000/spots/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    SetList(list.filter(item => item._id !== id))
+                }
+            })
+    }
+
     return (
         <div>
             <h3></h3>
@@ -47,7 +60,7 @@ const MyList = () => {
                             <td><button className="btn btn-outline btn-error text-2xl"><MdDeleteOutline /></button></td>
                         </tr> */}
                         {
-                            list.length > 0 ? list.map((item , idx) =>
+                            list.length > 0 ? list.map((item, idx) =>
                                 <tr key={idx}>
                                     <td>{idx + 1}</td>
                                     <td>{item.spot_name}</td>
@@ -55,14 +68,14 @@ const MyList = () => {
                                     <td>{item.country}</td>
                                     <td>{item.visitor}</td>
                                     <td><Link to={`/details/${item._id}`} className="btn btn-outline btn-info text-2xl"><FcViewDetails /></Link></td>
-                                    <td><button className="btn btn-outline btn-warning text-2xl"><CiEdit /></button></td>
-                                    <td><button className="btn btn-outline btn-error text-2xl"><MdDeleteOutline /></button></td>
+                                    <td><Link to={`/edit-spot/${item._id}`} className="btn btn-outline btn-warning text-2xl"><CiEdit /></Link></td>
+                                    <td><button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-error text-2xl"><MdDeleteOutline /></button></td>
                                 </tr>
                             )
-                            :
-                            <tr>
-                                <td colSpan="8" className="text-center font-bold">No Data Found please <Link className="btn btn-link" to='/add-spots'>add spots</Link></td>
-                            </tr>
+                                :
+                                <tr>
+                                    <td colSpan="8" className="text-center font-bold">No Data Found please <Link className="btn btn-link" to='/add-spots'>add spots</Link></td>
+                                </tr>
                         }
                     </tbody>
                 </table>
