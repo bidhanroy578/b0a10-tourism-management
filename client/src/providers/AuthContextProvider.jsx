@@ -4,6 +4,7 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInWithPopup,
+    signOut,
 } from "firebase/auth";
 import { AuthContext } from "./Contexts";
 import PropTypes from "prop-types";
@@ -23,6 +24,9 @@ const AuthContextProvider = ({ children }) => {
         const provider = new GoogleAuthProvider();
         return signInWithPopup(auth, provider);
     };
+    const logout = () => {
+        return signOut(auth)
+    }
     useEffect(() => {
         const logout = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -34,6 +38,7 @@ const AuthContextProvider = ({ children }) => {
     const datas = {
         user,
         loading,
+        logout,
         registerWithEmail,
         loginWithGoogle,
         loginWithEmail,
