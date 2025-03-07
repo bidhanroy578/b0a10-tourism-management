@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/Contexts";
 
 const AddSpot = () => {
+
+    const { user } = useContext(AuthContext)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -18,15 +22,15 @@ const AddSpot = () => {
         const winter = form.winter.checked
         const newSpot = { country, summer, winter, spot_name, location, cost, duration, image, visitor, usr_email, usr_name, description, }
 
-        fetch(`https://travel-nest-sigma.vercel.app/spots` , {
-            method : 'post',
-            headers: { 'content-type': 'application/json'},
+        fetch(`https://travel-nest-sigma.vercel.app/spots`, {
+            method: 'post',
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newSpot)
         })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result)
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+            })
     }
 
     return (
@@ -56,9 +60,9 @@ const AddSpot = () => {
                                         <label className="fieldset-label">Visitors per year</label>
                                         <input name="visitor" type="text" className="input" placeholder="Visitors per year" required />
                                         <label className="fieldset-label">User Email</label>
-                                        <input name="usr_email" type="text" className="input" placeholder="User Email" required />
+                                        <input name="usr_email" type="text" defaultValue={user?.email || ''} className="input" placeholder="User Email" required />
                                         <label className="fieldset-label">User name</label>
-                                        <input name="usr_name" type="text" className="input" placeholder="User name" required />
+                                        <input name="usr_name" type="text" defaultValue={user?.displayName || ''} className="input" placeholder="User name" required />
                                     </inputset>
                                 </inputset>
                                 <label className="fieldset-label">image url</label>
