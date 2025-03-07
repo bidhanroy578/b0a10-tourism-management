@@ -1,42 +1,40 @@
-// import { useContext } from "react";
-// import { AuthContext } from "../../context_provider/AuthContext";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import bg2 from './../../assets/svg/bg2.svg';
-
-// import Swal from "sweetalert2";
-
+import { useContext } from "react";
+import Swal from 'sweetalert2'
+import { AuthContext } from "../../providers/Contexts";
 
 const Login = () => {
 
-    // const navigate = useNavigate()
-    // const location = useLocation()
+    const navigate = useNavigate()
+    const location = useLocation()
     // console.log(location)
-    // const { loginWithEmail, loginWithGoogle } = useContext(AuthContext)
+    const { loginWithGoogle } = useContext(AuthContext)
 
-    // function successAlert() {
-    //     Swal.fire({
-    //         title: "Successfull!",
-    //         text: "You are logged in successfully",
-    //         icon: "success",
-    //         confirmButtonColor: "#01f702",
-    //         confirmButtonText: "Ok"
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             navigate(location?.state || '/')
-    //         }
-    //     });
-    // }
+    function successAlert() {
+        Swal.fire({
+            title: "Successfull!",
+            text: "You are logged in successfully",
+            icon: "success",
+            confirmButtonColor: "#01f702",
+            confirmButtonText: "Ok"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate(location?.state || '/')
+            }
+        });
+    }
 
-    // const handleGoogleLogin = () => {
-    //     loginWithGoogle()
-    //         .then(result => {
-    //             console.log(result.user)
-    //             successAlert()
-    //         }).catch(err => {
-    //             console.error(err);
-    //             alert(err.message)
-    //         })
-    // }
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                successAlert()
+            }).catch(err => {
+                console.error(err);
+                alert(err.message)
+            })
+    }
     // const handleSubmit = (e) => {
     //     e.preventDefault();
     //     const form = e.target;
@@ -75,7 +73,7 @@ const Login = () => {
                                 <p className="text-white">New here? <Link to='/register' className="link hover:text-red-400 font-rancho text-[15px]">create new account</Link></p>
                             </fieldset>
                         </form>
-                        <button className="btn bg-amber-200 text-black mt-4">Sign In With Google</button>
+                        <button onClick={handleGoogleLogin} className="btn bg-amber-200 text-black mt-4">Sign In With Google</button>
                     </div>
                 </div>
             </div>
