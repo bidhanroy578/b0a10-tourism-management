@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { MdLightMode } from "react-icons/md";
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/Contexts';
+import Swal from 'sweetalert2';
 
 const Header = () => {
 
@@ -23,12 +24,34 @@ const Header = () => {
         }
     }, [theme])
     const handleLogout = () => {
-        logout()
-            .then(() => {
-                console.log('logged out')
-            }).catch((error) => {
-                console.log(error)
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#f60002",
+            cancelButtonColor: "#50a2ff",
+            confirmButtonText: "Yes, Log out",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logout()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Logged out!",
+                            text: "Your have successfully logged out",
+                            icon: "success",
+                            confirmButtonColor: "#50a2ff",
+                        });
+                    }).catch((error) => {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: error?.message || 'error happened while logging out',
+                            icon: "error"
+                        });
+                    });
+
+            }
+        });
     }
 
     const links = <>
@@ -74,14 +97,14 @@ const Header = () => {
                                 <div className="dropdown dropdown-end">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
-                                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                            <img src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
                                         </div>
                                     </div>
                                     <ul
                                         tabIndex={0}
                                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                        <li><a>.... {console.log(user)}</a></li>
-                                        <li><a>Settings</a></li>
+                                        <li>{user?.displayName || 'Mr. User'}</li>
+                                        <li><a>Account Details</a></li>
                                         <li onClick={handleLogout}><a>Logout</a></li>
                                     </ul>
                                 </div>
