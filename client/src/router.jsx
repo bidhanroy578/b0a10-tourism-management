@@ -21,12 +21,12 @@ const router = createBrowserRouter([
             {
                 path: '/all-spots',
                 element: <AllSpots />,
-                loader: ()=> fetch(`http://localhost:3000/spots`)
+                loader: ()=> fetch(`https://travel-nest-sigma.vercel.app/spots`)
             },
             {
                 path: '/details/:id',
                 element: <Details />,
-                loader: ({params}) => fetch(`http://localhost:3000/spot/${params.id}`)
+                loader: ({params}) => fetch(`https://travel-nest-sigma.vercel.app/spot/${params.id}`)
             },
             {
                 path: '/add-spots' , 
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             {
                 path: 'edit-spot/:id',
                 element: <EditSpot />,
-                loader: ({params}) => fetch(`http://localhost:3000/spot/${params.id}`)
+                loader: ({params}) => fetch(`https://travel-nest-sigma.vercel.app/spot/${params.id}`)
             },
             {
                 path: '/my-list' ,

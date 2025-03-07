@@ -9,7 +9,7 @@ const MyList = () => {
     const [list, SetList] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/spots/test@mail.com`)
+        fetch(`https://travel-nest-sigma.vercel.app/spots/test@mail.com`)
             .then(res => res.json())
             .then(data => {
                 SetList(data)
@@ -18,7 +18,7 @@ const MyList = () => {
     }, [])
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:3000/spots/${id}`, {
+        fetch(`https://travel-nest-sigma.vercel.app/spots/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

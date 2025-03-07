@@ -18,7 +18,7 @@ const AddSpot = () => {
         const winter = form.winter.checked
         const newSpot = { country, summer, winter, spot_name, location, cost, duration, image, visitor, usr_email, usr_name, description, }
 
-        fetch(`http://localhost:3000/spots` , {
+        fetch(`https://travel-nest-sigma.vercel.app/spots` , {
             method : 'post',
             headers: { 'content-type': 'application/json'},
             body: JSON.stringify(newSpot)
