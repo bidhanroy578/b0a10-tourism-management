@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     // console.log(location)
-    const { loginWithGoogle } = useContext(AuthContext)
+    const { loginWithGoogle, loginWithEmail, } = useContext(AuthContext)
 
     function successAlert() {
         Swal.fire({
@@ -24,6 +24,15 @@ const Login = () => {
             }
         });
     }
+    function errorAlert(errorMessage) {
+        Swal.fire({
+            title: "Invalid email or password!!",
+            text: errorMessage,
+            icon: "error",
+            confirmButtonColor: "#f60002",
+            confirmButtonText: "Ok"
+        });
+    }
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
@@ -32,27 +41,28 @@ const Login = () => {
                 successAlert()
             }).catch(err => {
                 console.error(err);
-                alert(err.message)
+                errorAlert(err.message)
             })
     }
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password);
-    //     loginWithEmail(email, password)
-    //         .then(result => {
-    //             console.log(result.user)
-
-    //             //alert here 
-
-
-    //         }).catch(err => {
-    //             console.error(err);
-    //             alert(err.message)
-    //         })
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        if (password.length < 6) {
+            errorAlert("Password should be at least 6 characters long.")
+            return
+        }
+        loginWithEmail(email, password)
+            .then(result => {
+                console.log(result.user)
+                successAlert()
+            }).catch(err => {
+                console.error(err);
+                errorAlert(err.message)
+            })
+    }
     return (
         <>
             <Outlet></Outlet>
@@ -62,12 +72,12 @@ const Login = () => {
                         <h1 className="text-5xl font-bold">Login Now!</h1>
                     </div>
                     <div className="card w-full max-w-sm shrink-0 shadow-2xl">
-                        <form className="card-body">
+                        <form onSubmit={handleSubmit} className="card-body">
                             <fieldset className="fieldset">
                                 <label className="fieldset-label">Email</label>
-                                <input type="email" name="email" className="input" placeholder="Email" />
+                                <input type="email" name="email" className="input" placeholder="Email" required />
                                 <label className="fieldset-label">Password</label>
-                                <input type="password" name="password" className="input" placeholder="Password" />
+                                <input type="password" name="password" className="input" placeholder="Password" required />
                                 <div><a className="link link-hover text-amber-200 font-bold">Forgot password?</a></div>
                                 <button className="btn bg-amber-200 text-black mt-4">Login</button>
                                 <p className="text-white">New here? <Link to='/register' className="link hover:text-red-400 font-rancho text-[15px]">create new account</Link></p>

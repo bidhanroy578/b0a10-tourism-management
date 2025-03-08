@@ -18,7 +18,7 @@ const AuthContextProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
     const loginWithEmail = (email, password) => {
-        return signInWithEmailAndPassword(email, password);
+        return signInWithEmailAndPassword(auth, email, password);
     };
     const loginWithGoogle = () => {
         const provider = new GoogleAuthProvider();
