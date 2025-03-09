@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/Contexts";
+import Swal from "sweetalert2";
 
 const AddSpot = () => {
 
@@ -29,7 +30,14 @@ const AddSpot = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result)
+                if (result.insertedId && result.acknowledged) {
+                    Swal.fire({
+                        title: "Success!!",
+                        text: "Your place added to the spot list!",
+                        icon: "success",
+                        confirmButtonColor: "#01f702",
+                    });
+                }
             })
     }
 

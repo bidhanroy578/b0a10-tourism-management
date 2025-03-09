@@ -8,6 +8,7 @@ import AddSpot from "./pages/AddSpot";
 import MyList from "./pages/MyList";
 import Details from "./pages/Details";
 import EditSpot from "./pages/EditSpot";
+import RouterPrivate from "./RouterPrivate";
 
 const router = createBrowserRouter([
     {
@@ -21,25 +22,25 @@ const router = createBrowserRouter([
             {
                 path: '/all-spots',
                 element: <AllSpots />,
-                loader: ()=> fetch(`https://travel-nest-sigma.vercel.app/spots`)
+                loader: () => fetch(`https://travel-nest-sigma.vercel.app/spots`)
             },
             {
                 path: '/details/:id',
                 element: <Details />,
-                loader: ({params}) => fetch(`https://travel-nest-sigma.vercel.app/spot/${params.id}`)
+                loader: ({ params }) => fetch(`https://travel-nest-sigma.vercel.app/spot/${params.id}`)
             },
             {
-                path: '/add-spots' , 
-                element: <AddSpot />,
+                path: '/add-spots',
+                element: <RouterPrivate><AddSpot /></RouterPrivate>,
             },
             {
                 path: 'edit-spot/:id',
-                element: <EditSpot />,
-                loader: ({params}) => fetch(`https://travel-nest-sigma.vercel.app/spot/${params.id}`)
+                element: <RouterPrivate><EditSpot /></RouterPrivate>,
+                loader: ({ params }) => fetch(`https://travel-nest-sigma.vercel.app/spot/${params.id}`)
             },
             {
-                path: '/my-list' ,
-                element : <MyList />,
+                path: '/my-list',
+                element: <RouterPrivate><MyList /></RouterPrivate>,
             },
             {
                 path: "/login",
