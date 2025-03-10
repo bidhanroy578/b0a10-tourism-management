@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const Header = () => {
 
     const [theme, setTheme] = useState('light')
-    const { user, logout } = useContext(AuthContext)
+    const { user, logout, loading } = useContext(AuthContext)
     const handleLight = () => {
         setTheme('light')
         localStorage.setItem('theme', 'light')
@@ -92,28 +92,30 @@ const Header = () => {
                         }
                     </>
                     {
-                        user ?
-                            <>
-                                <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
-                                        </div>
-                                    </div>
-                                    <ul
-                                        tabIndex={0}
-                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                        <li>{user?.displayName || 'Mr. User'}</li>
-                                        <li><a>Account Details</a></li>
-                                        <li onClick={handleLogout}><a>Logout</a></li>
-                                    </ul>
-                                </div>
-                            </>
+                        loading ? ''
                             :
-                            <>
-                                <Link className='btn bg-blue-400' to="/login">Login</Link>
-                                <Link className='btn bg-blue-400' to='/register'>Register</Link>
-                            </>
+                            user ?
+                                <>
+                                    <div className="dropdown dropdown-end">
+                                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                            <div className="w-10 rounded-full">
+                                                <img src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
+                                            </div>
+                                        </div>
+                                        <ul
+                                            tabIndex={0}
+                                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                            <li>{user?.displayName || 'Mr. User'}</li>
+                                            <li><a>Account Details</a></li>
+                                            <li onClick={handleLogout}><a>Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <Link className='btn bg-blue-400' to="/login">Login</Link>
+                                    <Link className='btn bg-blue-400' to='/register'>Register</Link>
+                                </>
                     }
                 </div>
             </div >
