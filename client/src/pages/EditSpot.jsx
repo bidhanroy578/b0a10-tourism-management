@@ -1,6 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EditSpot = () => {
+    const navigate = useNavigate()
     const { country, spot_name, location, cost, duration, image, visitor, usr_email, usr_name, description, _id } = useLoaderData()
 
     const handleSubmit = e => {
@@ -20,15 +22,33 @@ const EditSpot = () => {
         const winter = form.winter.checked
         const newSpot = { country, summer, winter, spot_name, location, cost, duration, image, visitor, usr_email, usr_name, description, }
 
-        fetch(`https://travel-nest-sigma.vercel.app/spots/${_id}` , {
-            method : 'PUT',
-            headers: { 'content-type': 'application/json'},
+        fetch(`https://travel-nest-sigma.vercel.app/spots/${_id}`, {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newSpot)
         })
-        .then(res => res.json())
-        .then(result => {
-            console.log(result)
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                if (result.modifiedCount == 0) {
+                    Swal.fire({
+                        title: "No change !!",
+                        text: "No change in data!",
+                        icon: "error",
+                    })
+                }
+                if (result.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Success!!",
+                        text: "Your place added to the spot list!",
+                        icon: "success",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate('/my-list')
+                        }
+                    })
+                }
+            })
     }
 
     return (
