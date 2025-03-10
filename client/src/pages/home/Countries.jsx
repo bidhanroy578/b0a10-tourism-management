@@ -1,57 +1,29 @@
 // import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import bg5 from './../../assets/svg/bg5.svg'
+import { useEffect, useState } from 'react';
 const Countries = () => {
-
-    const image = 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Un-bangladesh.png/200px-Un-bangladesh.png'
+    const [countries, setCountries] = useState([])
+    useEffect(() => {
+        fetch('https://travel-nest-sigma.vercel.app/countries')
+            .then(res => res.json())
+            .then(data => {
+                setCountries(data)
+                console.log(data)
+            })
+    }, [])
     return (
         <div>
             <div className='flex justify-center items-center w-full overflow-x-hidden'>
-                <img src={bg5} className='flex-1/2 max-h-screen'/>
-                <h3 className="text-[4vw] my-5 ">Countries we covered as of now</h3>
+                <img src={bg5} className='flex-1/2 max-w-[50vw]' />
+                <h3 className="text-xl lg:text-[4vw] min-w-[45vw] my-5 ">Countries we covered as of now</h3>
             </div>
-            <div className="flex flex-auto flex-wrap justify-self-center justify-center gap-8">
-                {/* card 1 */}
-                <div className="w-60 h-72 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                    <div className="font-semibold text-xl text-black h-full text-center content-center hover:backdrop-blur-[2px]">
-                        <h3>Bangladesh</h3>
-                        <p>cox&apos;s bazar </p>
-                    </div>
-                </div>
-                {/* card 1 */}
-                <div className="w-60 h-72 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                    <div className="font-semibold text-xl text-black h-full text-center content-center hover:backdrop-blur-[2px]">
-                        <h3>Bangladesh</h3>
-                        <p>cox&apos;s bazar </p>
-                    </div>
-                </div>
-                {/* card 1 */}
-                <div className="w-60 h-72 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                    <div className="font-semibold text-xl text-black h-full text-center content-center hover:backdrop-blur-[2px]">
-                        <h3>Bangladesh</h3>
-                        <p>cox&apos;s bazar </p>
-                    </div>
-                </div>
-                {/* card 1 */}
-                <div className="w-60 h-72 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                    <div className="font-semibold text-xl text-black h-full text-center content-center hover:backdrop-blur-[2px]">
-                        <h3>Bangladesh</h3>
-                        <p>cox&apos;s bazar </p>
-                    </div>
-                </div>
-                {/* card 1 */}
-                <div className="w-60 h-72 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                    <div className="font-semibold text-xl text-black h-full text-center content-center hover:backdrop-blur-[2px]">
-                        <h3>Bangladesh</h3>
-                        <p>cox&apos;s bazar </p>
-                    </div>
-                </div>
-                {/* card 1 */}
-                <div className="w-60 h-72 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
-                    <div className="font-semibold text-xl text-black h-full text-center content-center hover:backdrop-blur-[2px]">
-                        <h3>Bangladesh</h3>
-                        <p>cox&apos;s bazar </p>
-                    </div>
-                </div>
+            <div className="flex flex-auto flex-wrap justify-self-center justify-center gap-3 md:gap-8">
+                {
+                    countries.map((country, index) =>
+                        <Link key={index} className='p-4 sm:px-14 sm:py-10 text-xl text-black font-bold bg-blue-300 rounded-xl hover:scale-105 active:scale-100 transition'>{country}</Link>
+                    )
+                }
             </div>
         </div>
     );
