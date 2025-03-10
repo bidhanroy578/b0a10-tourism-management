@@ -31,12 +31,13 @@ const AddSpot = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.insertedId && result.acknowledged) {
+                    form.reset()
                     Swal.fire({
                         title: "Success!!",
                         text: "Your place added to the spot list!",
                         icon: "success",
                         confirmButtonColor: "#01f702",
-                    });
+                    })
                 }
             })
     }
