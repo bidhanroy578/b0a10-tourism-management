@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 const Slide = () => {
 
     const images = [
-        'https://www.goworldtravel.com/wp-content/uploads/2023/02/angkor-wat-travel.jpg',
         'https://tripjive.com/wp-content/uploads/2024/11/Sundarbans-boat-tour-2-1068x610.jpg',
         'https://tripjive.com/wp-content/uploads/2024/11/Sundarbans-wildlife-5-1068x610.jpg',
         'https://tripjive.com/wp-content/uploads/2024/09/reasons-to-visit-Coxs-Bazar-1068x610.jpg',
@@ -22,14 +21,14 @@ const Slide = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        pauseOnHover: true
+        pauseOnHover: false
     }
     return (
         <div className="slider-container w-full h-full">
             <Slider {...settings}>
                 {
                     images.map((img, idx) => <div key={idx}>
-                        <div className='min-h-[90vh] min-w-[90vw] bg-cover bg-top' style={{backgroundImage : `url(${img})`}}></div>
+                        <div className='min-h-[90vh] min-w-[90vw] bg-cover bg-top' style={{ backgroundImage: `url(${img})` }}></div>
                     </div>)
                 }
             </Slider>

@@ -92,11 +92,7 @@ const AddSpot = () => {
                                     <legend className="fieldset-legend">Description of the spot</legend>
                                     <textarea name="description" className="textarea h-30 w-full" placeholder="Description"></textarea>
                                 </fieldset>
-                                {/* <label className="fieldset-label">Email</label>
-                                <input type="text" className="input" placeholder="Email" /> */}
-                                {/* <label className="fieldset-label">Email</label>
-                                <input type="text" className="input" placeholder="Email" /> */}
-                                <button className="btn btn-neutral mt-4">Add Place</button>
+                                <button className="btn btn-info mt-4">Add Place</button>
                             </form>
                         </div>
                     </div>
