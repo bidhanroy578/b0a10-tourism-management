@@ -1,22 +1,21 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Card = ({ spot }) => {
-    const { image, name } = spot;
+    const { image, spot_name, visitor, location, country, _id } = spot;
+    console.log(spot)
     return (
-        <div className="card dark:bg-slate-400 w-96 shadow-sm">
+        <div className="card dark:bg-slate-400 w-2xs md:w-xs lg:w-sm shadow-blue-400 shadow-md">
             <figure>
-                <img src={image}/>
+                <img src={image} className='h-52 w-full object-cover object-center' />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">
-                   {name}
-                    <div className="badge badge-secondary">NEW</div>
-                </h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                <h2 className="card-title">{spot_name}</h2>
+                <p>{location} </p>
                 <div className="card-actions justify-end">
-                    <div className="badge badge-outline">2000 / year</div>
-                    <div className="badge badge-outline">country</div>
-                    <button className="btn btn-xs bg-blue-400"> Details </button>
+                    <div className="badge badge-outline">{visitor} / year</div>
+                    <div className="badge badge-outline">{country}</div>
+                    <Link to={`/details/${_id}`} className="btn btn-xs bg-blue-400"> Details </Link>
                 </div>
             </div>
         </div>

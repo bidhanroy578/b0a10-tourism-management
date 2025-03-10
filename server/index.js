@@ -57,6 +57,20 @@ async function run() {
             res.send(cursor)
         })
 
+        // Get popular spots from the database (top 6)
+        app.get('/popular_spots', async (req, res) => {
+            const cursor = spotsCollection.find(
+                {},
+                {
+                    projection: {spot_name: 1, location: 1, country: 1, visitor: 1, image: 1,},
+                    sort: { visitor: -1 },
+                    limit: 6
+                }
+            )
+            const result = await cursor.toArray()
+            res.send(result)
+        })
+
 
         // spots collection of an user 
         app.get('/spots/:usr_email', async (req, res) => {
