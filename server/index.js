@@ -25,16 +25,13 @@ const uri = `mongodb+srv://${process.env.user}:${process.env.pass}@cluster0.2umn
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
-        strict: true,
+        strict: false,
         deprecationErrors: true,
     }
 });
 
 async function run() {
     try {
-        // Connect the client to the server	(optional starting in v4.7)
-        // await client.connect();
-
         const database = client.db("travel_nest");
         const spotsCollection = database.collection("spots");
 
@@ -69,6 +66,12 @@ async function run() {
             )
             const result = await cursor.toArray()
             res.send(result)
+        })
+
+        //get countries list from the database
+        app.get('/countries', async (req, res) => {
+            const cursor = await spotsCollection.distinct("country")
+            res.send(cursor)
         })
 
 
@@ -107,10 +110,6 @@ async function run() {
             res.send(result);
         })
 
-
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
         // await client.close();
