@@ -9,13 +9,14 @@ import Swal from "sweetalert2";
 const MyList = () => {
     const { user } = useContext(AuthContext)
     const [list, SetList] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch(`https://travel-nest-sigma.vercel.app/spots/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 SetList(data)
-                console.log(data)
+                setLoading(false)
             })
     }, [])
 
@@ -50,6 +51,7 @@ const MyList = () => {
         });
     }
 
+    if (loading) return <div className='flex justify-center min-h-[50vh]'><div className="loading loading-spinner text-info loading-xl"></div></div>
     return (
         <div>
             <h3></h3>
