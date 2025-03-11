@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import bg3 from '../../assets/svg/bg3.svg';
 import Card from './Card';
+import { Typewriter } from 'react-simple-typewriter'
+
 const PopularSpots = () => {
     const [list, setList] = useState([])
     useEffect(() => {
@@ -15,7 +17,22 @@ const PopularSpots = () => {
     return (
         <div className='mt-16'>
             <div className='flex justify-center items-center w-full p-4'>
-                <h3 className='text-[4vw] w-full min-w-[45vw]'>Pupular tourists spots around the South East Asia</h3>
+                <h3 className='text-[4vw] w-full min-w-[45vw]'>Pupular tourists spots <br />
+                    on <span style={{ color: 'red', fontWeight: 'bold' }}>
+                        {/* Style will be inherited from the parent element */}
+                        <Typewriter
+                            words={['Bangladesh', 'Indonesia', 'Malaysia', 'Thailand', 'Vietnam']}
+                            loop={0}
+                            cursor
+                            cursorStyle='_'
+                            typeSpeed={70}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        // onLoopDone={handleDone}
+                        // onType={handleType}
+                        />
+                    </span>
+                </h3>
                 <img src={bg3} className='max-w-[50vw] flex-1/2' />
             </div>
             {/* List of popular tourist spots */}
