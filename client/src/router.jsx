@@ -9,11 +9,13 @@ import MyList from "./pages/MyList";
 import Details from "./pages/Details";
 import EditSpot from "./pages/EditSpot";
 import RouterPrivate from "./RouterPrivate";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement: <Error />,
         children: [
             {
                 path: "/",
