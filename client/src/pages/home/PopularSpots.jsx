@@ -10,7 +10,6 @@ const PopularSpots = () => {
             .then(res => res.json())
             .then(data => {
                 setList(data)
-                console.log(data)
             })
     }, [])
 

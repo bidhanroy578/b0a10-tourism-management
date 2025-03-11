@@ -40,8 +40,7 @@ const Register = () => {
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
-            .then(result => {
-                console.log(result.user)
+            .then(() => {
                 successAlert()
             }).catch(err => {
                 console.error(err);
@@ -54,14 +53,12 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password, name);
         if (password.length < 6) {
             errorAlert('password must be at least 6 characters')
             return
         }
         registerWithEmail(email, password)
             .then(result => {
-                console.log(result.user)
                 updateProfile(result.user, {
                     displayName: name,
                 })

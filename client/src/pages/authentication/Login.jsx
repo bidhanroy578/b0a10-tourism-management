@@ -8,7 +8,6 @@ const Login = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
-    // console.log(location)
     const { loginWithGoogle, loginWithEmail, } = useContext(AuthContext)
 
     function successAlert() {
@@ -36,8 +35,7 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
-            .then(result => {
-                console.log(result.user)
+            .then(() => {
                 successAlert()
             }).catch(err => {
                 console.error(err);
@@ -49,14 +47,12 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         if (password.length < 6) {
             errorAlert("Password should be at least 6 characters long.")
             return
         }
         loginWithEmail(email, password)
-            .then(result => {
-                console.log(result.user)
+            .then(() => {
                 successAlert()
             }).catch(err => {
                 console.error(err);

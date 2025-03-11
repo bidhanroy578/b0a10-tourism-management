@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ spot }) => {
     const { image, spot_name, visitor, location, country, _id } = spot;
-    console.log(spot)
     return (
         <Fade
             direction='right'
