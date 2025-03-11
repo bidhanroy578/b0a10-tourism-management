@@ -1,3 +1,4 @@
+import { Fade } from 'react-awesome-reveal';
 import Contact from './Contact';
 import Countries from './Countries';
 import PlanAtrip from './PlanAtrip';
@@ -6,7 +7,11 @@ import Slide from './Slider';
 
 const Home = () => {
     return (
-        <>
+        <Fade
+            cascade
+            damping={0.09}
+            triggerOnce
+        >
             <div className='w-[90vw] mx-auto max-h-[90vh]'>
                 <Slide />
             </div>
@@ -14,7 +19,7 @@ const Home = () => {
             <Countries />
             <PlanAtrip />
             <Contact />
-        </>
+        </Fade>
     );
 };
 
