@@ -21,7 +21,7 @@ const Countries = () => {
             <div className="flex flex-auto flex-wrap justify-self-center justify-center gap-3 md:gap-8">
                 {
                     countries.map((country, index) =>
-                        <Link key={index} className='p-4 sm:px-14 sm:py-10 text-xl text-black font-bold bg-blue-300 rounded-xl hover:scale-105 active:scale-100 transition'>{country}</Link>
+                        <Link to={`/country/${country}`} key={index} className='p-4 sm:px-14 sm:py-10 text-xl text-black font-bold bg-blue-300 rounded-xl hover:scale-105 active:scale-100 transition'>{country}</Link>
                     )
                 }
             </div>
