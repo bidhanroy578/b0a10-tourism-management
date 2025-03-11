@@ -25,7 +25,6 @@ const router = createBrowserRouter([
             {
                 path: '/all-spots',
                 element: <AllSpots />,
-                loader: () => fetch(`https://travel-nest-sigma.vercel.app/spots`)
             },
             {
                 path: '/spots/:country',

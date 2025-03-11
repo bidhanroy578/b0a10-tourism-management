@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AllSpots = () => {
-    const allSpots = useLoaderData()
-    console.log(allSpots)
+
+    const [allSpots, setAllSpots] = useState([])
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        fetch(`https://travel-nest-sigma.vercel.app/spots`)
+            .then(res => res.json())
+            .then(data => {
+                setAllSpots(data)
+                setLoading(false)
+            })
+
+    }, [])
+    if (loading) return <div className='flex justify-center min-h-[50vh]'><div className="loading loading-spinner text-info loading-xl"></div></div>
 
     return (
         <div className="flex flex-auto flex-wrap gap-5 justify-center w-full my-16">
