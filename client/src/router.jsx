@@ -10,6 +10,7 @@ import Details from "./pages/Details";
 import EditSpot from "./pages/EditSpot";
 import RouterPrivate from "./RouterPrivate";
 import Error from "./pages/Error";
+import SpotsInACountry from "./pages/SpotsInACountry";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
                 path: '/all-spots',
                 element: <AllSpots />,
                 loader: () => fetch(`https://travel-nest-sigma.vercel.app/spots`)
+            },
+            {
+                path: '/spots/:country',
+                element: <SpotsInACountry />,
             },
             {
                 path: '/details/:id',
