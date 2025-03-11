@@ -91,11 +91,11 @@ const Register = () => {
                             <input type="email" name="email" className="input" placeholder="Email" />
                             <label className="fieldset-label text-black">Password</label>
                             <input type="password" name="password" className="input" placeholder="Password" />
-                            <button className="btn bg-amber-200 text-black mt-4">Register</button>
-                            <p className="text-white">Already have an account? <Link to='/login' className="link hover:text-red-400 font-rancho text-[15px]">login here</Link></p>
+                            <button className="btn bg-blue-300 text-black mt-4">Register</button>
+                            <p className="text-blue-400">Already have an account? <Link to='/login' className="link hover:text-red-400 font-rancho text-[15px]">login here</Link></p>
                         </fieldset>
                     </form>
-                    <button onClick={handleGoogleLogin} className="btn bg-amber-200 text-black mt-4">Sign In With Google</button>
+                    <button onClick={handleGoogleLogin} className="btn bg-blue-300 text-black mt-4">Sign In With Google</button>
                 </div>
             </div>
         </div>

@@ -78,12 +78,12 @@ const Login = () => {
                                 <input type="email" name="email" className="input" placeholder="Email" required />
                                 <label className="fieldset-label">Password</label>
                                 <input type="password" name="password" className="input" placeholder="Password" required />
-                                <div><a className="link link-hover text-amber-200 font-bold">Forgot password?</a></div>
-                                <button className="btn bg-amber-200 text-black mt-4">Login</button>
-                                <p className="text-white">New here? <Link to='/register' className="link hover:text-red-400 font-rancho text-[15px]">create new account</Link></p>
+                                {/* <div><a className="link link-hover text-amber-200 font-bold">Forgot password?</a></div> */}
+                                <button className="btn bg-blue-300 text-black mt-4">Login</button>
+                                <p className="text-blue-400">New here? <Link to='/register' className="link hover:text-red-400 font-rancho text-[15px]">create new account</Link></p>
                             </fieldset>
                         </form>
-                        <button onClick={handleGoogleLogin} className="btn bg-amber-200 text-black mt-4">Sign In With Google</button>
+                        <button onClick={handleGoogleLogin} className="btn bg-blue-300 text-black mt-4">Sign In With Google</button>
                     </div>
                 </div>
             </div>
