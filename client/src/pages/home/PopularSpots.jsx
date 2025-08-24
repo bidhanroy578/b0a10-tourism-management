@@ -35,7 +35,7 @@ const PopularSpots = () => {
                 <img src={bg3} className='max-w-[50vw] flex-1/2' />
             </div>
             {/* List of popular tourist spots */}
-            <div className='flex flex-auto flex-wrap justify-center justify-self-center gap-5'>
+            <div className='flex flex-auto flex-wrap justify-center justify-self-center gap-5 w-full overflow-x-hidden'>
                 {
                     list.map((spot, index) => <Card key={index} spot={spot} />)
                 }
