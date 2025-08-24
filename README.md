@@ -1,2 +1,2 @@
 live link : 
-travel-nest.broy.surge.sh
+http://travel-nest.broy.surge.sh
